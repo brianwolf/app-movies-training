@@ -21,10 +21,9 @@ virtualenv -p python3 env
 # Instalacion de los requerimientos
 pip install -r requirements.txt
 
-# Configurar la app
+# Configurar la app por primera vez
+python manage.py makemigrations 
 python manage.py migrate
-python manage.py makemigrations
-python manage.py createsuperuser
 
 # Levantar el server
 python manage.py runserver
