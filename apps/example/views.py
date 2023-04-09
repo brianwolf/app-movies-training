@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 
 class Proxy(APIView):
 
-    def get(self, request, id=None):
+    def get(self, _, id=None):
         if id == None:
             return JsonResponse(service.list(), safe=False)
 
@@ -21,6 +21,6 @@ class Proxy(APIView):
         id = service.save(dto.json_to_example(body))
         return JsonResponse({'id': id}, status=201)
 
-    def delete(self, request, id):
+    def delete(self, _, id):
         service.delete(id)
         return HttpResponse(status=204)

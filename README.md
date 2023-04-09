@@ -7,13 +7,12 @@
 ## :gear: Requisitos
 
 * python 3
-* virtualenv
 
 ## :tada: Uso
 
 ```bash
 # Creacion del virtual env
-virtualenv -p python3 env
+python3 -m venv env
 
 # Activar el virtual env
 . env/bin/activate
@@ -22,10 +21,8 @@ virtualenv -p python3 env
 pip install -r requirements.txt
 
 # Configurar la app por primera vez
-python manage.py makemigrations 
 python manage.py migrate
 
 # Levantar el server
 python manage.py runserver
 ```
-

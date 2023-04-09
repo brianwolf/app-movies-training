@@ -6,7 +6,7 @@ from datetime import datetime
 class Example:
     string: str
     integer: int
-    decimal: float
+    decimal: float 
     id: int = None
     date: datetime = field(default=datetime.now())
 
