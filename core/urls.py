@@ -42,4 +42,6 @@ urlpatterns = [
 
     # APPS
     path('api/v1/examples/', include('example.urls')),
+    path('api/v1/usuariosInfo/', include('usuariosInfo.urls')), #aqui
+
 ]
