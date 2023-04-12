@@ -9,6 +9,7 @@ gunicorn g:
 run r:
 	python manage.py runserver
 
+
 migrate m:
 	python manage.py migrate
 
@@ -27,5 +28,6 @@ test t:
 
 coverage c:
 	coverage run --omit=*/env/*,*/migrations/*,*/__init__.py,manage.py,*/core/* manage.py test
-	coverage report -m
 	coverage html
+
+
