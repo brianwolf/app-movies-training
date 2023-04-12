@@ -7,8 +7,9 @@ gunicorn g:
 
 
 run r:
+	
 	python manage.py runserver
-
+	
 migrate m:
 	python manage.py migrate
 
