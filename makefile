@@ -7,6 +7,7 @@ gunicorn g:
 
 
 run r:
+	
 	python manage.py runserver
 
 
