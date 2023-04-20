@@ -9,6 +9,7 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
 """
 from django.db import models
 from django.utils import timezone
+from typing import Optional
 
 from peliculas.classes import Genero, Pelicula
 
@@ -30,7 +31,7 @@ class GeneroEntity(models.Model):
         )
 
     @staticmethod
-    def buscar_genero_en_DB(genero: Genero) -> "GeneroEntity":
+    def buscar_genero_en_DB(genero: Genero) -> Optional["GeneroEntity"]:
         try:
             genero_query = GeneroEntity.objects.filter(
                 models.Q(nombre=genero.nombre) | models.Q(id=genero.id)
