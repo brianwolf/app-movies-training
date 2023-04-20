@@ -1,26 +1,25 @@
 import json
 
 from django.http import HttpResponse, JsonResponse
-from example import dto, service
+from usuariosInfo import dto, service
 from rest_framework.views import APIView
-
-
+#esto no toco
 class Proxy(APIView):
 
-    def get(self, _, id=None):
+    def get(self, request, id=None):
         if id == None:
             return JsonResponse(service.list(), safe=False)
 
-        example = service.get(id)
-        if not example:
+        usuario_info = service.get(id)
+        if not usuario_info:
             return HttpResponse(status=204)
-        return JsonResponse(dto.example_to_json(example))
+        return JsonResponse(dto.usuarioI_to_json(usuario_info))
 
     def post(self, request):
         body = json.loads(request.body)
-        id = service.save(dto.json_to_example(body))
+        id = service.save(dto.json_to_usuarioI(body))
         return JsonResponse({'id': id}, status=201)
 
-    def delete(self, _, id):
+    def delete(self, request, id):
         service.delete(id)
         return HttpResponse(status=204)

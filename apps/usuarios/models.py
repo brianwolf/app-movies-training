@@ -13,7 +13,7 @@ class ExampleEntity(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = "EXAMPLES"
+        db_table = 'EXAMPLES'
 
     def to_class(self):
         return Example(
@@ -25,7 +25,7 @@ class ExampleEntity(models.Model):
         )
 
     @staticmethod
-    def from_class(e: Example) -> "ExampleEntity":
+    def from_class(e: Example) -> 'ExampleEntity':
         return ExampleEntity(
             id=e.id,
             string=e.string,

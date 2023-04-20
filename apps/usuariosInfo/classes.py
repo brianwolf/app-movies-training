@@ -3,13 +3,12 @@ from datetime import datetime
 
 
 @dataclass
-class Example:
-    string: str
-    integer: int
-    decimal: float 
+class UsuariosInfo:
+    nombre: str 
+    apellido: str
+    email: str
+    fecha: datetime = field(default=datetime.now()) 
     id: int = None
-    date: datetime = field(default=datetime.now())
-
+    
     def __eq__(self, __o: object) -> bool:
         return self.id == __o.id
-
