@@ -3,9 +3,7 @@ from django.utils import timezone
 
 from example.classes import Example
 
-class GenreEntity(models.Model):
-    name = models.CharField(max_length=50)
-    
+
 class ExampleEntity(models.Model):
     id = models.AutoField(primary_key=True)
     string = models.CharField(max_length=200)
@@ -14,7 +12,7 @@ class ExampleEntity(models.Model):
     date = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'EXAMPLES'
+        db_table = "EXAMPLES"
 
     def to_class(self):
         return Example(
@@ -26,7 +24,7 @@ class ExampleEntity(models.Model):
         )
 
     @staticmethod
-    def from_class(e: Example) -> 'ExampleEntity':
+    def from_class(e: Example) -> "ExampleEntity":
         return ExampleEntity(
             id=e.id,
             string=e.string,
