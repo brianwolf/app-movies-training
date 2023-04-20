@@ -3,7 +3,9 @@ from django.utils import timezone
 
 from example.classes import Example
 
-
+class GenreEntity(models.Model):
+    name = models.CharField(max_length=50)
+    
 class ExampleEntity(models.Model):
     id = models.AutoField(primary_key=True)
     string = models.CharField(max_length=200)

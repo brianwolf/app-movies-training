@@ -1,3 +1,6 @@
+# linting #
+.pylintrc
+
 # Django #
 logs/
 *.log
