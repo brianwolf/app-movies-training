@@ -19,8 +19,8 @@ def list() -> list[int]:
 
 
 def get(id: int) -> Pelicula:
-    search = PeliculaEntity.objects.filter(id=id)
-    return search.get().to_class() if search.exists() else None
+    pelicula_entity = PeliculaEntity.objects.filter(id=id).first()
+    return pelicula_entity.to_class() if pelicula_entity else None
 
 
 def save(pelicula: Pelicula) -> int:
