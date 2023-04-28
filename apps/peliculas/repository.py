@@ -7,6 +7,8 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
                               (clases)                        (entities)
 """
 # TODO: si se borra algo, la enumeracion de IDs continua desde el ultimo borrado. Ej: borro ID5, el siguiente elmento va a tener ID6 en vez de 5
+from django.db import transaction
+
 from core.exception import AppException
 from peliculas.classes import Genero, Pelicula
 from peliculas.error import PeliculasError
@@ -24,19 +26,20 @@ def get(id: int) -> Pelicula:
 
 
 def save(pelicula: Pelicula) -> int:
-    # Primero se guarda la pelicula
-    # TODO: Si rompe algo de genero,la pelicula se guarda. Creo que no deberia guardarse...
-    pelicula_entity = PeliculaEntity.from_class(pelicula)
-    pelicula_entity.save()
-    # Segundo se guardan los generos
-    for genero in pelicula.generos:
-        genero_entity = GeneroEntity.get_by_name(genero)
-        if not genero_entity:
-            genero_entity = GeneroEntity.from_class(genero)
-            genero_entity.save()
-        # Tercero se gurda la relacion Many to many
-        pelicula_entity.generos.add(genero_entity)
-    return pelicula_entity.id
+    with transaction.atomic():
+        # Primero se guarda la pelicula
+        # TODO: Si rompe algo de genero,la pelicula se guarda. Creo que no deberia guardarse...
+        pelicula_entity = PeliculaEntity.from_class(pelicula)
+        pelicula_entity.save()
+        # Segundo se guardan los generos
+        for genero in pelicula.generos:
+            genero_entity = GeneroEntity.get_by_name(genero)
+            if not genero_entity:
+                genero_entity = GeneroEntity.from_class(genero)
+                genero_entity.save()
+            # Tercero se gurda la relacion Many to many
+            pelicula_entity.generos.add(genero_entity)
+        return pelicula_entity.id
 
 
 def delete(id: int):
