@@ -9,7 +9,7 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
 # TODO: si se borra algo, la enumeracion de IDs continua desde el ultimo borrado. Ej: borro ID5, el siguiente elmento va a tener ID6 en vez de 5
 from core.exception import AppException
 from peliculas.classes import Genero, Pelicula
-from peliculas.error import ExampleError
+from peliculas.error import PeliculasError
 from peliculas.models import GeneroEntity, PeliculaEntity
 
 
@@ -44,5 +44,5 @@ def delete(id: int):
     search = PeliculaEntity.objects.filter(id=id)
     if not search.exists():
         msj = f"Example with id {id} not exist"
-        raise AppException(ExampleError.EXAMPLE_OBJECT_NOT_EXIST, msj)
+        raise AppException(PeliculasError.PELICULA_OBJECT_NOT_EXIST, msj)
     search.delete()
