@@ -7,12 +7,13 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
 """
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Optional
 
 
 @dataclass
 class Genero:
     nombre: str
-    id: int = None
+    id: Optional[int] = None
 
     def __eq__(self, __o: object) -> bool:
         return self.id == __o.id
@@ -24,7 +25,7 @@ class Pelicula:
     puntuacion: float
     fecha_estreno: datetime = field(default=datetime.now())
     generos: list[Genero] = field(default_factory=list)
-    id: int = None
+    id: Optional[int] = None
 
     def __eq__(self, __o: object) -> bool:
         return self.id == __o.id

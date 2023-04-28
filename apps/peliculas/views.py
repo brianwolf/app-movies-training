@@ -18,8 +18,8 @@ class Proxy(APIView):
 
     def post(self, request):
         body = json.loads(request.body)
-        id = service.save(dto.json_a_pelicula(body))
-        return JsonResponse({"id": id}, status=201)
+        _id = service.save(dto.json_a_pelicula(body))
+        return JsonResponse({"id": _id}, status=201)
 
     def delete(self, request, id):
         service.delete(id)

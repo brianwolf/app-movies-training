@@ -6,7 +6,6 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
      (jsons)                  clases.py                       models.py
                               (clases)                        (entities)
 """
-# TODO: si se borra algo, la enumeracion de IDs continua desde el ultimo borrado. Ej: borro ID5, el siguiente elmento va a tener ID6 en vez de 5
 from django.db import transaction
 
 from core.exception import AppException
@@ -28,7 +27,6 @@ def get(id: int) -> Pelicula:
 def save(pelicula: Pelicula) -> int:
     with transaction.atomic():
         # Primero se guarda la pelicula
-        # TODO: Si rompe algo de genero,la pelicula se guarda. Creo que no deberia guardarse...
         pelicula_entity = PeliculaEntity.from_class(pelicula)
         pelicula_entity.save()
         # Segundo se guardan los generos

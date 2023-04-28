@@ -25,9 +25,9 @@ def cargar_generos_default(apps, schema_editor):
         {"id": 19, "nombre": "superheroes"},
         {"id": 20, "nombre": "deportes"},
     ]
-    GeneroEntity = apps.get_model("peliculas", "GeneroEntity")
+    genero_entity = apps.get_model("peliculas", "GeneroEntity")
     for genero in generos_peliculas_iniciales:
-        GeneroEntity(id=genero["id"], nombre=genero["nombre"]).save()
+        genero_entity(id=genero["id"], nombre=genero["nombre"]).save()
 
 
 class Migration(migrations.Migration):
