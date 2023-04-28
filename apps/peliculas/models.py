@@ -59,9 +59,6 @@ class PeliculaEntity(models.Model):
     def __str__(self) -> str:
         return f"id: {self.id}, nombre: {self.nombre}"
 
-    def extraer_nuevos_generos(self):
-        pass
-
     def to_class(self) -> "Pelicula":
         return Pelicula(
             id=self.id,
