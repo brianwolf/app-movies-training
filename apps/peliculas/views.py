@@ -13,7 +13,7 @@ class Proxy(APIView):
 
         movie = service.get(id)
         if not movie:
-            return HttpResponse(status=204)
+            return HttpResponse(status=404)
         return JsonResponse(dto.pelicula_a_json(movie))
 
     def post(self, request):
