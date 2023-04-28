@@ -31,7 +31,7 @@ class GeneroEntity(models.Model):
         )
 
     @classmethod
-    def buscar_genero_en_DB(cls, genero: Genero) -> Optional["GeneroEntity"]:
+    def get_by_object(cls, genero: Genero) -> Optional["GeneroEntity"]:
         try:
             genero_query = GeneroEntity.objects.filter(
                 models.Q(nombre=genero.nombre) | models.Q(id=genero.id)
