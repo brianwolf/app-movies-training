@@ -15,7 +15,7 @@ from peliculas.models import GeneroEntity, PeliculaEntity
 
 def list() -> list[int]:
     search = PeliculaEntity.objects.all()
-    return [pelicula.id for pelicula in search] if search.exists() else []
+    return [pelicula.id for pelicula in search]
 
 
 def get(id: int) -> Pelicula:
