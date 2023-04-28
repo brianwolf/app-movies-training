@@ -3,6 +3,7 @@
 
 # Django #
 logs/
+*.log.*
 *.log
 *.pot
 *.pyc
