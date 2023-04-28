@@ -8,6 +8,7 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
                               (clases)                        (entities)
 """
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from typing import Optional
 
@@ -40,8 +41,7 @@ class GeneroEntity(models.Model):
                 genero_query.count() <= 1
             ), f"Se encontro mas de un genero para el id y nombre dado: {genero_query}"
             return genero_query.get()
-        # TODO: como verga catcheo el: peliculas.models.GeneroEntity.DoesNotExist: GeneroEntity matching query does not exist. No puedo pasarle el argumento self
-        except Exception:
+        except ObjectDoesNotExist:
             return None
 
     @staticmethod
