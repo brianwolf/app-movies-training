@@ -32,6 +32,7 @@ def save(pelicula: Pelicula) -> int:
     for genero in pelicula.generos:
         genero_entity = GeneroEntity.buscar_genero_en_DB(genero)
         if not genero_entity:
+            genero.id = None
             genero_entity = GeneroEntity.from_class(genero)
             genero_entity.save()
         # Tercero se gurda la relacion Many to many
