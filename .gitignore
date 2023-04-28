@@ -1,5 +1,9 @@
+# linting #
+.pylintrc
+
 # Django #
 logs/
+*.log.*
 *.log
 *.pot
 *.pyc
