@@ -8,7 +8,6 @@ CAPA PRESENTACION<--dto.py-->CAPA NEGOCIO<--repository.py-->CAPA DE DATOS
                               (clases)                        (entities)
 """
 from django.db import models
-from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from typing import Optional
 
@@ -31,8 +30,8 @@ class GeneroEntity(models.Model):
             nombre=self.nombre,
         )
 
-    @staticmethod
-    def buscar_genero_en_DB(genero: Genero) -> Optional["GeneroEntity"]:
+    @classmethod
+    def buscar_genero_en_DB(cls, genero: Genero) -> Optional["GeneroEntity"]:
         try:
             genero_query = GeneroEntity.objects.filter(
                 models.Q(nombre=genero.nombre) | models.Q(id=genero.id)
@@ -41,7 +40,7 @@ class GeneroEntity(models.Model):
                 genero_query.count() <= 1
             ), f"Se encontro mas de un genero para el id y nombre dado: {genero_query}"
             return genero_query.get()
-        except ObjectDoesNotExist:
+        except cls.DoesNotExist:
             return None
 
     @staticmethod
