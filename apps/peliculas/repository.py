@@ -43,5 +43,5 @@ def delete(id: int):
     search = PeliculaEntity.objects.filter(id=id)
     if not search.exists():
         msj = f"Example with id {id} not exist"
-        raise AppException(PeliculasError.PELICULA_OBJECT_NOT_EXIST, msj)
+        raise AppException(PeliculasError.PELICULA_NO_EXISTE, msj)
     search.delete()
