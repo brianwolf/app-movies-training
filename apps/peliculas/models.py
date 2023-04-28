@@ -31,11 +31,9 @@ class GeneroEntity(models.Model):
         )
 
     @classmethod
-    def get_by_object(cls, genero: Genero) -> Optional["GeneroEntity"]:
+    def get_by_name(cls, genero: Genero) -> Optional["GeneroEntity"]:
         try:
-            genero_query = GeneroEntity.objects.filter(
-                models.Q(nombre=genero.nombre) | models.Q(id=genero.id)
-            )
+            genero_query = GeneroEntity.objects.filter(nombre=genero.nombre)
             assert (
                 genero_query.count() <= 1
             ), f"Se encontro mas de un genero para el id y nombre dado: {genero_query}"
@@ -69,7 +67,7 @@ class PeliculaEntity(models.Model):
             id=self.id,
             nombre=self.nombre,
             fecha_estreno=self.fecha_estreno,
-            generos=[genero for genero in self.generos.all()],
+            generos=list(self.generos.all()),
             puntuacion=self.puntuacion,
         )
 

@@ -30,9 +30,8 @@ def save(pelicula: Pelicula) -> int:
     pelicula_entity.save()
     # Segundo se guardan los generos
     for genero in pelicula.generos:
-        genero_entity = GeneroEntity.get_by_object(genero)
+        genero_entity = GeneroEntity.get_by_name(genero)
         if not genero_entity:
-            genero.id = None
             genero_entity = GeneroEntity.from_class(genero)
             genero_entity.save()
         # Tercero se gurda la relacion Many to many

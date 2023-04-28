@@ -20,8 +20,7 @@ def genero_a_json(genero: Genero) -> dict[str, object]:
 
 def json_a_genero(genero_dict: dict[str, object]) -> Genero:
     return Genero(
-        id=genero_dict.get("id", None),
-        nombre=genero_dict["nombre"],
+        nombre=genero_dict["nombre"].lower(),
     )
 
 
@@ -37,7 +36,6 @@ def pelicula_a_json(pelicula: Pelicula) -> dict[str, object]:
 
 def json_a_pelicula(pelicula_dict: dict[str, object]) -> Pelicula:
     return Pelicula(
-        id=pelicula_dict.get("id", None),
         nombre=pelicula_dict["nombre"],
         fecha_estreno=pelicula_dict["fecha_estreno"],
         generos=[json_a_genero(genero) for genero in pelicula_dict["generos"]],
