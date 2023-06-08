@@ -24,7 +24,7 @@ from core import views
 swagger_schema_view = get_schema_view(
     openapi.Info(
         title="Django API",
-        default_version='v1',
+        default_version="v1",
         description="Template Django project",
     ),
     public=True,
@@ -34,14 +34,12 @@ swagger_schema_view = get_schema_view(
 
 urlpatterns = [
     # DJANGO
-    path('admin/', admin.site.urls),
-    path('', views.index),
-
+    path("admin/", admin.site.urls),
+    path("", views.index),
     # SWAGGER
-    re_path('docs/', swagger_schema_view.with_ui('swagger')),
-
+    re_path("docs/", swagger_schema_view.with_ui("swagger")),
     # APPS
-    path('api/v1/examples/', include('example.urls')),
-    path('api/v1/usuariosInfo/', include('usuariosInfo.urls')), #aqui
-
+    path("api/v1/examples/", include("example.urls")),
+    path("api/v1/peliculas/", include("peliculas.urls")),
+    path("api/v1/usuariosInfo/", include("usuariosInfo.urls")),  # aqui
 ]
