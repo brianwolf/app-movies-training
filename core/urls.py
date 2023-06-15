@@ -36,8 +36,10 @@ urlpatterns = [
     # DJANGO
     path('admin/', admin.site.urls),
     path('', views.Root.as_view()),
+
     # SWAGGER
-    re_path("docs/", swagger_schema_view.with_ui("swagger")),
+    path("docs/", swagger_schema_view.with_ui("swagger")),
+
     # APPS
     path("api/v1/examples/", include("example.urls")),
     path("api/v1/peliculas/", include("peliculas.urls")),
