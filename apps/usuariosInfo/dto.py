@@ -4,12 +4,13 @@ from usuariosInfo.classes import UsuariosInfo
 
 
 def usuarioI_to_json(e: UsuariosInfo) -> dict[str, object]:
+    print(e)
     return {
         'id': e.id,
         'nombre': e.nombre,
-        'apellido':e.apellido,
+        'apellido': e.apellido,
         'email': e.email,
-        'fecha': e.fecha.isoformat(), #y esto que era ya me olvide
+        'fecha': e.fecha.isoformat(),
     }
 
 

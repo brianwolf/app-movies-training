@@ -16,20 +16,7 @@
 ## :tada: Uso
 
 ```bash
-# Creacion del virtual env
-python3 -m venv env
-
-# Activar el virtual env
-. env/bin/activate
-
-# Instalacion de los requerimientos
-pip install -r requirements.txt
-
-# Configurar la app por primera vez
-python manage.py migrate
-
-# Levantar el server
-python manage.py runserver
+c
 ```
 
 ## Themoviedb

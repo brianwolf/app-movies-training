@@ -38,6 +38,7 @@ ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(str))
 INSTALLED_APPS = [
     "example.apps.ExampleConfig",
     "usuariosInfo.apps.UsuarioInfoConfig",
+    "usuarios.apps.UsuariosConfig",
     "peliculas.apps.PeliculasConfig",
     "rest_framework",
     "drf_yasg",

@@ -15,8 +15,7 @@ def usuario_to_json(e: Usuarios) -> dict[str, object]:
 
 def json_to_usuario(d: dict[str, object]) -> Usuarios:
     return Usuarios(
-
-        id_usuario=d.get('id', None),
+        id_usuario=d.get('id_usuario', None),
         nick=d['nick'],
         password=d['password'],
         info= json_to_usuarioI(d['info'])
